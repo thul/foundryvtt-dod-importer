@@ -36,7 +36,8 @@ export default class Importer extends Application {
         $("#dod-importer-import").on("click", event => {
             event.preventDefault();
             event.stopPropagation();
-            console.log("import!");
+
+            this.import($("#dod-importer-charcode").val());
             this.render(false);
         });
 
@@ -48,6 +49,12 @@ export default class Importer extends Application {
         });
 
         super.activateListeners(html);
+    }
+
+    import(base64) {
+        let json = atob();
+        const actor = JSON.parse(json);
+        console.log(actor);
     }
 }
 
