@@ -1,0 +1,19 @@
+{
+  "name": "dod-importer",
+  "title": "Doctors of Doom Character Importer",
+  "description": "Simple module to import characters exported from Doctors of Doom website",
+  "author": "Thul",
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.7",
+  "systems": ["wrath-and-glory"],
+  "dependencies": [
+    {
+      "name": "wrath-and-glory",
+      "type": "system"
+    }
+  ],
+  "esmodules": [
+    "modules/init.js"
+  ]
+}

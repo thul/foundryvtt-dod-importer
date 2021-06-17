@@ -1,0 +1,22 @@
+<form id="dod-importer" autocomplete="off"{{#if identifier}} data-identifier="{{ identifier }}"{{/if}}>
+    <p>Agent to import</p>
+    <select class="people_list">
+        {{#each pcs as | pc | }}
+            <option id="{{pc.data.id}}">{{pc.data.name}}</option>
+        {{/each}}
+    </select>
+    <span>
+    <p>Input string</p>
+</span>
+    <textarea name="charcode"></textarea>
+<hr>
+    <footer class="sheet-footer flexrow">
+        <button id="dod-importer-cancel" type="reset" name="reset">
+            <i class="fas fa-ban"></i> Cancel
+        </button>
+        <button id="dod-importer-import" type="submit" name="submit">
+            <i class="far fa-save"></i>
+            Import
+        </button>
+    </footer>
+</form>
