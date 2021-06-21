@@ -13,7 +13,7 @@ Hooks.on("renderActorDirectory", (app, html, data) => {
     //     return;
 
     let button = $(
-        `<button id="dod-import-button" class="${game.system.id}">DoD Character Import</button>`
+        `<div style="margin-top: 5px; margin-bottom: 5px"><button id="dod-import-button" class="header-actions action-buttons ${game.system.id}">DoD Character Import</button></div>`
     );
 
     button.on("click", (e) => {
