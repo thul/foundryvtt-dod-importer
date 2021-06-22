@@ -3,7 +3,7 @@
   "title": "Doctors of Doom Character Importer",
   "description": "Simple module to import characters exported from Doctors of Doom website",
   "author": "Thul",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.7",
   "systems": ["wrath-and-glory"],
@@ -15,5 +15,8 @@
   ],
   "esmodules": [
     "modules/init.js"
-  ]
+  ],
+  "url": "https://github.com/thul/foundryvtt-dod-importer",
+  "manifest": "https://raw.githubusercontent.com/thul/foundryvtt-dod-importer/master/module.json",
+  "download": "https://github.com/thul/foundryvtt-dod-importer/archive/v0.1.0.zip"
 }
