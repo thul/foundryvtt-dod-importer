@@ -17,6 +17,6 @@
     "modules/init.js"
   ],
   "url": "https://github.com/thul/foundryvtt-dod-importer",
-  "manifest": "https://raw.githubusercontent.com/thul/foundryvtt-dod-importer/master/module.json",
-  "download": "https://github.com/thul/foundryvtt-dod-importer/archive/v0.1.0.zip"
+  "manifest": "https://github.com/thul/foundryvtt-dod-importer/releases/download/0.1.0/module.json",
+  "download": "https://github.com/thul/foundryvtt-dod-importer/releases/download/0.1.0/module.zip"
 }
