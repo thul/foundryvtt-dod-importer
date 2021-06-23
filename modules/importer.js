@@ -65,12 +65,26 @@ export default class Importer extends Application {
             ui.notifications.error("Import failed, can't parse import string...");
             return;
         }
-
         let pcActor = this.getActorById(pcId);
-
         this.updateAttributes(pcActor, importedData.attributes);
         this.updateSkills(pcActor, importedData.skills);
         this.updateInfo(pcActor, importedData.species, importedData.faction, importedData.archetype, importedData.wealth);
+
+        for (let talent of importedData.talents) {
+            this.updateTalent(pcActor, talent);
+        }
+
+        for (let ability of importedData.abilities) {
+            this.updateAbility(pcActor, ability);
+        }
+
+        for (let psychicPower of importedData.PsychicPowers) {
+            this.updatePsychicPower(pcActor, psychicPower);
+        }
+
+        for (let ascensionPackage of importedData.ascensionPackages) {
+            this.updateAscencion(pcActor, ascensionPackage);
+        }
 
         ui.notifications.info("All done!");
     }
@@ -147,20 +161,41 @@ export default class Importer extends Application {
         });
     }
 
-    updateTalents(pcActor) {
-        // TODO: Parse talents and figure out how to do this
+    async updateTalent(pcActor, talent) {
+        let foundTalent = pcActor.data.items.filter(a => a.data.name === talent.name);
+
+        if (foundTalent.length !== 0) {
+            return;
+        }
+
+        await Item.create({name: talent.name, data: {cost : talent.cost} , type: "talent"}, {parent: pcActor});
     }
 
-    updateAbilities(pcActor) {
-        // TODO: Parse Abilties and figure out how to do this
+    async updateAbility(pcActor, ability) {
+        let foundAbility = pcActor.data.items.filter(a => a.data.name === ability.name);
+
+        if (foundAbility.length !== 0) {
+            return;
+        }
+        await Item.create({name: ability.name, data: {cost : ability.cost} , type: "ability"}, {parent: pcActor});
     }
 
-    updatePhychicPowers(pcActor) {
-        // TODO: Parse Psychicpowers and figure out how to do this
+    async updatePsychicPower(pcActor, psychicPower) {
+        let foundPsychicPower = pcActor.data.items.filter(a => a.data.name === psychicPower.name);
+
+        if (foundPsychicPower.length !== 0) {
+            return;
+        }
+        await Item.create({name: psychicPower.name, data: {cost : psychicPower.cost} , type: "psychicPower"}, {parent: pcActor});
     }
 
-    updateAscencion(pcActor) {
-        // TODO: Parse Ascencion  and figure out how to do this
+    async updateAscencion(pcActor, ascension) {
+        let foundAscension = pcActor.data.items.filter(a => a.data.name === ascension.name);
+
+        if (foundAscension.length !== 0) {
+            return;
+        }
+        await Item.create({name: ascension.name, data: {cost : ascension.cost} , type: "ascension"}, {parent: pcActor});
     }
 
     updateGear(pcActor) {
