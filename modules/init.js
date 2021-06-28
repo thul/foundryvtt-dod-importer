@@ -9,9 +9,6 @@ Hooks.on("ready", () => {
 });
 
 Hooks.on("renderActorDirectory", (app, html, data) => {
-     if (!game.user.isGM)
-         return;
-
     let button = $(
         `<div style="margin-top: 5px; margin-bottom: 5px"><button id="dod-import-button" class="header-actions action-buttons ${game.system.id}">Character Import</button></div>`
     );

@@ -1,4 +1,5 @@
 <form id="dod-importer" autocomplete="off"{{#if identifier}} data-identifier="{{ identifier }}"{{/if}}>
+    {{#if pcs.length}}
     <p>Agent to import</p>
     <select id="dod-importer-pc-id" class="people_list">
         {{#each pcs as | pc | }}
@@ -6,16 +7,19 @@
         {{/each}}
     </select>
     <span>
-    <p>Input string</p>
-</span>
+        <p>Input string</p>
+    </span>
     <textarea id="dod-importer-charcode" name="charcode">
 
     </textarea>
-<hr>
+    <hr>
     <footer class="sheet-footer flexrow">
         <button id="dod-importer-import" type="submit" name="submit">
             <i class="far fa-save"></i>
             Import
         </button>
     </footer>
+    {{else}}
+    <p>You do not seem to be the owner (or GM) of any characters. Please contact your GM so they can make you the owner of a character</p>
+    {{/if}}
 </form>

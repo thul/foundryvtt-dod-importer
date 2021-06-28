@@ -29,8 +29,14 @@ export default class Importer extends Application {
     }
 
     getData() {
+        let actors = [];
+        for (let actor of this.getActors()) {
+            if (this.hasAccess(game.user, actor)) {
+                actors.push(actor);
+            }
+        }
         this.state = {
-            pcs: this.getActors()
+            pcs: actors
         };
 
         return this.state;
@@ -66,6 +72,11 @@ export default class Importer extends Application {
             return;
         }
         let pcActor = this.getActorById(pcId);
+        if (!this.hasAccess(game.user, pcActor)) {
+            ui.notifications.error("You do not have access to the select actor");
+            return;
+        }
+
         this.updateAttributes(pcActor, importedData.attributes);
         this.updateSkills(pcActor, importedData.skills);
         this.updateInfo(pcActor, importedData.species, importedData.faction, importedData.archetype, importedData.wealth);
@@ -87,6 +98,10 @@ export default class Importer extends Application {
         }
 
         ui.notifications.info("All done!");
+    }
+
+    hasAccess(user, actor) {
+        return actor.testUserPermission(user, "owner") || user.isGm;
     }
 
     updateAttributes(pcActor, attributes) {
